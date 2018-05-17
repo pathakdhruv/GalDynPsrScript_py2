@@ -1,0 +1,158 @@
+
+** This is GalDynPsr to be run with python2, if you are using python3, please download and install GalDynPsr3.
+
+
+You need to run GalDynPsr.py as 
+
+> python GalDynPsr.py
+
+1) It will ask whether the pulsar in any globular cluster or not. If yes, then reads parameters from Harris catalogue (GC_harris.txt). 
+
+2a) If not, you need to give b, l, d (with errors).
+
+2b) Remember this option can be chosen even for cluster pulsars, if you want to do error analysis.
+
+3) The code will then ask you to choose a combination out of different options like A, B, C, D,
+
+Model-A: apl_old/c (i.e. b0 = 0; DT91) and Z_NT95
+Model-B: apl_old/c (i.e. b0 = 0; DT91) and Z_HF04
+Model-C: apl_new/c (i.e. dv/dR = -0.2; Reid2014) and Z_NT95
+Model-D: apl_new/c (i.e. dv/dR = -0.2; Reid2014) and Z_HF04
+
+Model-Ea: apl_old/c (i.e. b0 = 0; DT91) and ‘zforce’ in galpy (without BH)
+Model-Eb: apl_old/c (i.e. b0 = 0; DT91) and ‘zforce’ in galpy (with BH)
+
+Model-Fa: apl_new/c (i.e. dv/dR = -0.2; Reid2014) and ‘zforce’ in galpy (without BH)
+Model-Fb: apl_new/c (i.e. dv/dR = -0.2; Reid2014) and ‘zforce’ in galpy (with BH)
+
+Model-Ga: Using Vp'/Vs from galpy (without BH) and Z_NT95
+Model-Gb: Using Vp'/Vs from galpy (with BH) and Z_NT95
+
+Model-Ha: ‘Rforce’ in galpy (without BH) and Z_NT95
+Model-Hb: ‘Rforce’ in galpy (with BH) and Z_NT95
+
+Model-Ia: Using Vp'/Vs from galpy (without BH) and Z_HF04
+Model-Ib: Using Vp'/Vs from galpy (with BH) and Z_HF04
+
+Model-Ja: ‘Rforce’ in galpy (without BH) and Z_HF04
+Model-Jb: ‘Rforce’ in galpy (with BH) and Z_HF04
+
+Model-Ka: Using Vp'/Vs from galpy (without BH) and ‘zforce’ in galpy (without BH)
+Model-Kb: Using Vp'/Vs from galpy (with BH) and ‘zforce’ in galpy (with BH)
+
+Model-La: ‘Rforce’ in galpy (without BH) and ‘zforce’ in galpy (without BH)
+Model-Lb: ‘Rforce’ in galpy (with BH) and ‘zforce’ in galpy (with BH)
+
+
+4) After choosing the option, the code will return Excess terms due to parallel and perpendicular (to the Galactic plane) acceleration.
+
+5) The code will then ask you whether you want to evaluate the Shklovskii term in case you know proper motion.
+
+6) Please see example.png for the screenshot of an example run of the code.
+
+7) parameters.py file contains values of different constants, as well as the values of different parameters as:
+   Vs, sigVs (error in Vs), Rskpc (Rs in kpc units), sigRs (error in Rskpc), b0reid14 (dv/dR), sigb0r (error in dv/dR), b0dt91 (slope parameter), sigb0dt (error in slope parameter)
+
+
+Reid2014: Reid M. J., Menten K. M., Brunthaler A., Zheng X. W., Dame T. M., 2014, ApJ, 783, 130.
+
+DT91: Damour T., Taylor J.H., 1991, ApJ, 366, 501.
+
+NT95: Nice D.J., Taylor J.H., 1995, ApJ, 441, 429.
+
+HF04: Holmberg J., Flynn C., 2004, MNRAS, 352, 440.
+
+
+====
+
+Description of different codes:
+
+parameters.py: contains parameters (constants) used in the package
+
+GC_harris.txt: Contains l, b, d for globular clusters from Harris catalogue
+
+Main.py: main program. If the pulsar is not in a GC, it calls ExcessGalfunc() from ExcessGal.py
+
+        If the pulsar is in GC, it calls readGCfunc(), gcinp(), and  GCrepeat() from ReadGC.py
+
+
+
+ReadGC.py:
+
+ readGCfunc(): reads the Harris catalogue
+
+ gcinp(): checks for GC name in the Harris catalogue with user input. Calculates ap_pl/c, az/c y calling allcal() of AllCal.py
+    
+  GCrepeat(): Repeats input if wrong GC name entered.
+    
+ExcessGal.py: Calculates ap_pl/c, az/c by calling allcal() of AllCal.py
+
+AllCal.py: Calculates ap_pl/c with the help of Excesspl.py. Calculates az/c by calling ExcessZ.py
+
+ExcessZ.py:  Calculates az/c, both Nice-Taylor (1995) expression as well as our fit of HF2004
+
+Excesspl.py: Calculates apl/c. Can take any value of the slope parameter dv/dR from the parameter file. b0 = (Vs/Rs)*(dV/dR) = 0 is the conventional.
+
+calA.py: Model A - Calculates apl_old/c (i.e. b0 = 0; DT91) and az_NT95. 
+
+calB.py: Model B - Calculates apl_old/c (i.e. b0 = 0; DT91) and az_HF04.
+
+calC.py: Model C - Calculates apl_new/c (i.e. dv/dR = -0.2; Reid2014) and az_NT95.
+
+calD.py: Model D - Calculates apl_new/c (i.e. dv/dR = -0.2; Reid2014) and az_HF04.
+
+calEa.py: Model Ea - Calculates apl_old/c (i.e. b0 = 0; DT91) and ‘zforce’ in galpy (without BH)
+calEb.py: Model Eb - Calculates apl_old/c (i.e. b0 = 0; DT91) and ‘zforce’ in galpy (with BH)
+
+calFa.py: Model Fa - Calculates apl_new/c (i.e. dv/dR = -0.2; Reid2014) and ‘zforce’ in galpy (without BH)
+calFb.py: Model Fb - Calculates apl_new/c (i.e. dv/dR = -0.2; Reid2014) and ‘zforce’ in galpy (with BH)
+
+calGa.py: Model Ga - Calculates apl/c using Vp'/Vs from galpy (without BH) and az_NT95
+calGb.py: Model Gb - Calculates apl/c using Vp'/Vs from galpy (with BH) and az_NT95
+
+calHa.py: Model Ha - Calculates ‘Rforce’ in galpy (without BH) and az_NT95
+calHb.py: Model Hb - Calculates ‘Rforce’ in galpy (with BH) and az_NT95
+
+calIa.py: Model Ia - Calculates apl/c using Vp'/Vs from galpy (without BH) and az_HF04
+calIb.py: Model Ib - Calculates apl/c using Vp'/Vs from galpy (with BH) and az_HF04
+
+calJa.py: Model Ja - Calculates ‘Rforce’ in galpy (without BH) and az_HF04
+calJb.py: Model Jb - Calculates ‘Rforce’ in galpy (with BH) and az_HF04
+
+calKa.py: Model Ka - Calculates apl/c using Vp'/Vs from galpy (without BH) and ‘zforce’ in galpy (without BH)
+calKb.py: Model Kb - Calculates apl/c using Vp'/Vs from galpy (with BH) and ‘zforce’ in galpy (with BH)
+
+calLa.py: Model La - Calculates ‘Rforce’ in galpy (without BH) and ‘zforce’ in galpy (without BH)
+calLb.py: Model Lb - Calculates ‘Rforce’ in galpy (with BH) and ‘zforce’ in galpy (with BH)
+
+Shk.py: Calculates the Shklovskii term d(mu_T*mu_T)/c. Takes user input of proper motion in right ascension and declination.
+
+galpyMWpl.py: Using vcirc function in galpy to get Vp'(without BH) and eventually apl/c 
+
+galpyMWBHpl.py: Using vcirc function in galpy to get Vp'(with BH) and eventually apl/c 
+
+galpyMWRfo.py: Using evaluateRforces function in galpy(without BH) to get apl/c 
+
+galpyMWBHRfo.py: Using evaluateRforces function in galpy(with BH) to get apl/c
+
+galpyMWZfo.py: Using evaluatezforces function in galpy(without BH) to get az/c
+
+galpyMWBHZfo.py: Using evaluatezforces function in galpy(with BH) to get az/c
+
+err_excesspl_Damour.py: Calculates error in apl_old/c
+
+err_excesspl_Reid.py: Calculates error in apl_new/c
+
+err_NT.py: Calculates error in az_NT95 value
+
+err_HFhigh.py: Calculates error in az_HF04_high value
+
+err_HFlow.py: Calculates error in az_HF04_low value
+
+err_Rp.py: Calculates error in Rp' value
+
+err_Shklovskii.py: Calculates error in the Shklovskii term
+
+err_zkpc.py: Calculates error in z value
+
+##############################################################
