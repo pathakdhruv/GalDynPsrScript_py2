@@ -5,9 +5,9 @@ import parameters as par
 from err_Shklovskii import err_Shkl
 
 
-global mu_T,mu_alpha, sigmua, mu_delta, sigmud
+
 def shk(dkpc, sigd):
-  
+  global mu_T,mu_alpha, sigmua, mu_delta, sigmud, Pshks  
   c= par.c
 
   mu_alphar, sigmuar = raw_input("Enter the proper motion of the pulsar in right ascension (mas yr^-1), error in mu_alpha(sigmua) [separated by comma]: ").split((','))
@@ -26,3 +26,6 @@ def shk(dkpc, sigd):
   print ("The Shlovskii term contribution is: ", Pshks,"+/-",errshkl)
 
   return None;
+
+def Exshk():
+   return Pshks;

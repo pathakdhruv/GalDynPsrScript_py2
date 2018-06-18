@@ -48,9 +48,11 @@ Model-Lb: ‘Rforce’ in galpy (with BH) and ‘zforce’ in galpy (with BH)
 
 5) The code will then ask you whether you want to evaluate the Shklovskii term in case you know proper motion.
 
-6) Please see example.png for the screenshot of an example run of the code.
+6) Afterwards, the code asks whether you want to get the intrinsic spin and orbital period derivatives, in case you know the observed period derivatives and the periods.
 
-7) parameters.py file contains values of different constants, as well as the values of different parameters as:
+7) Please see example.png for the screenshot of an example run of the code.
+
+8) parameters.py file contains values of different constants, as well as the values of different parameters as:
    Vs, sigVs (error in Vs), Rskpc (Rs in kpc units), sigRs (error in Rskpc), b0reid14 (dv/dR), sigb0r (error in dv/dR), b0dt91 (slope parameter), sigb0dt (error in slope parameter)
 
 
@@ -138,6 +140,8 @@ galpyMWBHRfo.py: Using evaluateRforces function in galpy(with BH) to get apl/c
 galpyMWZfo.py: Using evaluatezforces function in galpy(without BH) to get az/c
 
 galpyMWBHZfo.py: Using evaluatezforces function in galpy(with BH) to get az/c
+
+pdotint.py: Calculates the instrinsic spin period derivative and the instrinsic orbital period derivative. Takes input of observed spin period derivative, observed orbital period derivative, spin period, and orbital period.
 
 err_excesspl_Damour.py: Calculates error in apl_old/c
 

@@ -8,7 +8,8 @@ from err_NT import errNT
 from galpyMWBHRfo import MWBHRfo
 
 
-def calhb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calhb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -19,5 +20,13 @@ def calhb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel(galpy-Rforce,with BH), Excess_z_NT95 = ", ExcRforceBH,", ", azbcnt) 
- 
+      excpl = ExcRforceBH
+      exz = azbcnt
       return None;
+
+
+def Explhb():
+   return excpl;
+
+def Exzhb():
+   return exz;

@@ -9,7 +9,8 @@ from err_excesspl_Reid import err_Reid14
 from galpyMWBHZfo import MWBHZfo
 
 
-def calfb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calfb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -19,6 +20,14 @@ def calfb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
       Excz = MWBHZfo(bdeg,ldeg,dkpc) #s^-1
 
       print ("Excess_parallel_Reid2014, Excess_z_galpy(with BH) = ", adrc,", ", Excz)
-
+      excpl = adrc
+      exz = Excz
 
       return None;
+
+
+def Explfb():
+   return excpl;
+
+def Exzfb():
+   return exz;

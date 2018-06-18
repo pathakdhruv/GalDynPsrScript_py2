@@ -9,7 +9,8 @@ from err_HFhigh import errHFhi
 from err_HFlow import errHFlo
 from galpyMWRfo import MWRfo
 
-def calja(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calja(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):  
+      global excpl,exz         
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -29,7 +30,18 @@ def calja(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
       if zkpcm<=1.5:
          print ("Excess_parallel(galpy-Rforce,without BH), Excess_z_HF04fit = ", ExcRforce,", ", azbchfl)
+         excpl = ExcRforce
+         exz = azbchfl
       else:
          print ("Excess_parallel(galpy-Rforce,without BH), Excess_z_HF04fit = ", ExcRforce,", ", azbchfh)
+         excpl = ExcRforce
+         exz = azbchfh
 
       return None;
+
+
+def Explja():
+   return excpl;
+
+def Exzja():
+   return exz;

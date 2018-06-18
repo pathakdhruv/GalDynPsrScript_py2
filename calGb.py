@@ -7,7 +7,8 @@ from Excesspl import Rpkpcfunc
 from err_NT import errNT
 from galpyMWBHpl import MWBHpl
 
-def calgb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calgb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -19,5 +20,13 @@ def calgb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel_galpy(from Vp/Vs, with BH), Excess_z_NT95 = ", Excplbh,", ", azbcnt)
-
+      excpl = Excplbh
+      exz = azbcnt
       return None;
+
+
+def Explgb():
+   return excpl;
+
+def Exzgb():
+   return exz;

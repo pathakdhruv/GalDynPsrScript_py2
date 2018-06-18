@@ -6,7 +6,8 @@ from Excesspl import Rpkpcfunc
 from galpyMWZfo import MWZfo
 from galpyMWpl import MWpl
 
-def calka(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calka(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -16,6 +17,15 @@ def calka(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel_galpy(from Vp/Vs, without BH),   Excess_z_galpy(without BH) = ", Excpl,", ", Excz)
-
+      excpl = Excpl
+      exz = Excz
 
       return None;
+
+
+
+def Explka():
+   return excpl;
+
+def Exzka():
+   return exz;

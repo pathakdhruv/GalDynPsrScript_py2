@@ -11,7 +11,8 @@ from err_HFlow import errHFlo
 from err_excesspl_Damour import err_DT91
 
 
-def calb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -31,13 +32,26 @@ def calb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
       if Har==1:
          if zkpcm<=1.5:
             print ("Excess_parallel_DT91, Excess_z_HF04fit = ", adrcold,", ", azbchfl)
+            excpl = adrcold
+            exz = azbchfl
          else:
             print ("Excess_parallel_DT91, Excess_z_HF04fit = ", adrcold,", ", azbchfh)
-
+            excpl = adrcold
+            exz = azbchfh 
       else:      
          if zkpcm<=1.5:
             print ("Excess_parallel_DT91, Excess_z_HF04fit = ", adrcold,"+/-",errDT91, ", ", azbchfl,"+/-",errlo)
+            excpl = adrcold
+            exz = azbchfl
          else:
             print ("Excess_parallel_DT91, Excess_z_HF04fit = ", adrcold,"+/-",errDT91, ", ", azbchfh,"+/-",errhi)
+            excpl = adrcold
+            exz = azbchfh
          
       return None;
+
+def Explb():
+   return excpl;
+
+def Exzb():
+   return exz;

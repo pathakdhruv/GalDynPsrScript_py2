@@ -7,7 +7,8 @@ from Excesspl import Rpkpcfunc
 from err_excesspl_Damour import err_DT91
 from galpyMWBHZfo import MWBHZfo
 
-def caleb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def caleb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -18,5 +19,13 @@ def caleb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel_DT91, Excess_z_galpy(with BH) = ", adrcold,", ", Excz)
+      excpl = adrcold
+      exz = Excz
 
       return None;
+
+def Expleb():
+   return excpl;
+
+def Exzeb():
+   return exz;

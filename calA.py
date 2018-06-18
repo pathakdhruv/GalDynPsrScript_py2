@@ -9,7 +9,8 @@ from err_NT import errNT
 from err_excesspl_Damour import err_DT91
 
 
-def cala(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def cala(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -23,9 +24,18 @@ def cala(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
       if Har==1:
          print ("Excess_parallel_DT91, Excess_z_NT95 = ", adrcold,", ", azbcnt)
+         excpl = adrcold
+         exz = azbcnt
       else:
          print ("Excess_parallel_DT91, Excess_z_NT95 = ", adrcold,"+/-",errDT91, ", ", azbcnt,"+/-",errnt)
-
+         excpl = adrcold
+         exz = azbcnt
      
 
       return None;
+
+def Expla():
+   return excpl;
+
+def Exza():
+   return exz;

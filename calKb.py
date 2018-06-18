@@ -6,7 +6,8 @@ from Excesspl import Rpkpcfunc
 from galpyMWBHZfo import MWBHZfo
 from galpyMWBHpl import MWBHpl
 
-def calkb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calkb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -16,6 +17,15 @@ def calkb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel_galpy(from Vp/Vs, with BH),   Excess_z_galpy(with BH) = ", Excplbh,", ", Exczbh)
-
+      excpl = Excplbh
+      exz = Exczbh
 
       return None;
+
+
+
+def Explkb():
+   return excpl;
+
+def Exzkb():
+   return exz;

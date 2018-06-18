@@ -10,7 +10,8 @@ from err_HFlow import errHFlo
 from galpyMWBHpl import MWBHpl
 
 
-def calib(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calib(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -29,7 +30,19 @@ def calib(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
       if zkpcm<=1.5:
          print("Excess_parallel_galpy(from Vp/Vs, with BH), Excess_z_HF04fit = ", Excplbh,", ", azbchfl)
+         excpl = Excplbh
+         exz = azbchfl
       else:
          print("Excess_parallel_galpy(from Vp/Vs, with BH), Excess_z_HF04fit = ", Excplbh,", ", azbchfh)
+         excpl = Excplbh
+         exz = azbchfh
 
       return None;
+
+
+
+def Explib():
+   return excpl;
+
+def Exzib():
+   return exz;

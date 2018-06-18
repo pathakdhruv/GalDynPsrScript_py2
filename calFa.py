@@ -9,7 +9,8 @@ from err_excesspl_Reid import err_Reid14
 from galpyMWZfo import MWZfo
 
 
-def calfa(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calfa(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -21,5 +22,12 @@ def calfa(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel_Reid2014,  Excess_z_galpy(without BH) = ", adrc,", ", Excz)
-
+      excpl = adrc
+      exz = Excz
       return None;
+
+def Explfa():
+   return excpl;
+
+def Exzfa():
+   return exz;

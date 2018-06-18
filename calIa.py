@@ -9,7 +9,8 @@ from err_HFhigh import errHFhi
 from err_HFlow import errHFlo
 from galpyMWpl import MWpl
 
-def calia(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calia(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -29,8 +30,18 @@ def calia(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
       if zkpcm<=1.5:
          print ("Excess_parallel_galpy(from Vp/Vs, without BH), Excess_z_HF04fit = ", Excpl,", ", azbchfl)
+         excpl = Excpl
+         exz = azbchfl
       else:
          print ("Excess_parallel_galpy(from Vp/Vs, without BH), Excess_z_HF04fit = ", Excpl,", ", azbchfh)
-
+         excpl = Excpl
+         exz = azbchfh
         
       return None;
+
+
+def Explia():
+   return excpl;
+
+def Exzia():
+   return exz;

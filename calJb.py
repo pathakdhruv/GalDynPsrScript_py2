@@ -9,7 +9,8 @@ from err_HFhigh import errHFhi
 from err_HFlow import errHFlo
 from galpyMWBHRfo import MWBHRfo
 
-def caljb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def caljb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -28,8 +29,18 @@ def caljb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
       if zkpcm<=1.5:
          print ("Excess_parallel(galpy-Rforce,with BH), Excess_z_HF04fit = ", ExcRforceBH,", ", azbchfl)
+         excpl = ExcRforceBH
+         exz = azbchfl
       else:
          print ("Excess_parallel(galpy-Rforce,with BH), Excess_z_HF04fit = ", ExcRforceBH,", ", azbchfh)
-
+         excpl = ExcRforceBH
+         exz = azbchfh
         
       return None;
+
+
+def Expljb():
+   return excpl;
+
+def Exzjb():
+   return exz;

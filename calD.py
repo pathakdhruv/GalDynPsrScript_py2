@@ -12,7 +12,8 @@ from err_HFlow import errHFlo
 from err_excesspl_Reid import err_Reid14
 
 
-def cald(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def cald(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -33,16 +34,31 @@ def cald(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
          if zkpcm<=1.5:
             print ("Excess_parallel_Reid2014, Excess_z_HF04fit = ", adrc,", ", azbchfl)
             print ("Vp/Vs= ", Vprat(Rpkpcfunc(dkpc,b,l,par.Rskpc)))
+            excpl = adrc
+            exz = azbchfl
          else:
             print ("Excess_parallel_Reid2014, Excess_z_HF04fit = ", adrc,", ", azbchfh)
-            print ("Vp/Vs= ", Vprat(Rpkpcfunc(dkpc,b,l,par.Rskpc)))      
+            print ("Vp/Vs= ", Vprat(Rpkpcfunc(dkpc,b,l,par.Rskpc)))
+            excpl = adrc
+            exz = azbchfh      
       else:
     
          if zkpcm<=1.5:
             print ("Excess_parallel_Reid2014, Excess_z_HF04fit = ", adrc,"+/-",errReid, ", ", azbchfl,"+/-",errlo)
-            print ("Vp/Vs= ", Vprat(Rpkpcfunc(dkpc,b,l,par.Rskpc)))      
+            print ("Vp/Vs= ", Vprat(Rpkpcfunc(dkpc,b,l,par.Rskpc)))
+            excpl = adrc
+            exz = azbchfl      
          else:
             print ("Excess_parallel_Reid2014, Excess_z_HF04fit = ", adrc,"+/-",errReid, ", ", azbchfh,"+/-",errhi)
             print ("Vp/Vs= ", Vprat(Rpkpcfunc(dkpc,b,l,par.Rskpc)))
+            excpl = adrc
+            exz = azbchfh
 
       return None;
+
+
+def Expld():
+   return excpl;
+
+def Exzd():
+   return exz;

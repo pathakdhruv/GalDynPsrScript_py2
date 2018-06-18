@@ -7,7 +7,8 @@ from Excesspl import Rpkpcfunc
 from err_excesspl_Damour import err_DT91
 from galpyMWZfo import MWZfo
 
-def calea(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calea(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -19,5 +20,13 @@ def calea(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel_DT91, Excess_z_galpy(without BH) = ", adrcold,", ", Excz)
-
+      excpl = adrcold
+      exz = Excz
       return None;
+
+
+def Explea():
+   return excpl;
+
+def Exzea():
+   return exz;

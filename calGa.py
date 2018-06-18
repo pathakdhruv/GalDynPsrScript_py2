@@ -7,7 +7,8 @@ from Excesspl import Rpkpcfunc
 from err_NT import errNT
 from galpyMWpl import MWpl
 
-def calga(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calga(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
+      global excpl,exz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -19,5 +20,13 @@ def calga(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
    
       print ("Excess_parallel_galpy(from Vp/Vs, without BH), Excess_z_NT95 = ", Excpl,", ", azbcnt)
-
+      excpl = Excpl
+      exz = azbcnt
       return None;
+
+
+def Explga():
+   return excpl;
+
+def Exzga():
+   return exz;

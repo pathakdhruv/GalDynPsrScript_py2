@@ -8,7 +8,8 @@ from err_NT import errNT
 from galpyMWRfo import MWRfo
 
 
-def calha(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):           
+def calha(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
+      global excpl,exz          
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -20,5 +21,13 @@ def calha(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
 
 
       print ("Excess_parallel(galpy-Rforce,without BH), Excess_z_NT95 = ", ExcRforce,", ", azbcnt)
-
+      excpl = ExcRforce
+      exz = azbcnt
       return None;
+
+
+def Explha():
+   return excpl;
+
+def Exzha():
+   return exz;
