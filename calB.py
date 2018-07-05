@@ -12,7 +12,7 @@ from err_excesspl_Damour import err_DT91
 
 
 def calb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
-      global excpl,exz           
+      global excpl,exz, errpl, errz            
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -43,11 +43,15 @@ def calb(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
             print ("Excess_parallel_DT91, Excess_z_HF04fit = ", adrcold,"+/-",errDT91, ", ", azbchfl,"+/-",errlo)
             excpl = adrcold
             exz = azbchfl
+            errpl = errDT91
+            errz = errlo 
          else:
             print ("Excess_parallel_DT91, Excess_z_HF04fit = ", adrcold,"+/-",errDT91, ", ", azbchfh,"+/-",errhi)
             excpl = adrcold
             exz = azbchfh
-         
+            errpl = errDT91
+            errz = errhi          
+
       return None;
 
 def Explb():
@@ -55,3 +59,9 @@ def Explb():
 
 def Exzb():
    return exz;
+
+def Errplb():
+   return errpl;
+
+def Errzb():
+   return errz;

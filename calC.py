@@ -13,7 +13,7 @@ from err_excesspl_Reid import err_Reid14
 
 
 def calc(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har): 
-      global excpl,exz          
+      global excpl,exz, errpl, errz           
       b = bdeg*par.degtorad
       l = ldeg*par.degtorad
       zkpc = dkpc*math.sin(b)
@@ -32,8 +32,9 @@ def calc(bdeg, sigb, ldeg, sigl, dkpc, sigd, Har):
       else:      
          print ("Excess_parallel_Reid2014, Excess_z_NT95 = ", adrc,"+/-",errReid, ", ", azbcnt,"+/-",errnt)
          excpl = adrc
-         exz = azbcnt       
-
+         exz = azbcnt 
+         errpl = errReid      
+         errz = errnt
       return None;
 
 
@@ -42,3 +43,9 @@ def Explc():
 
 def Exzc():
    return exz;
+
+def Errplc():
+   return errpl;
+
+def Errzc():
+   return errz;

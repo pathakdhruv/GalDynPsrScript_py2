@@ -7,7 +7,7 @@ from err_Shklovskii import err_Shkl
 
 
 def shk(dkpc, sigd):
-  global mu_T,mu_alpha, sigmua, mu_delta, sigmud, Pshks  
+  global mu_T,mu_alpha, sigmua, mu_delta, sigmud, Pshks, errshkl  
   c= par.c
 
   mu_alphar, sigmuar = raw_input("Enter the proper motion of the pulsar in right ascension (mas yr^-1), error in mu_alpha(sigmua) [separated by comma]: ").split((','))
@@ -29,3 +29,6 @@ def shk(dkpc, sigd):
 
 def Exshk():
    return Pshks;
+
+def errShk():
+   return errshkl;

@@ -11,11 +11,11 @@ conversion = 1000.0/(c*yrts*pow(10.0,6.0))
 
 # --- parameters and errors in those ----
 
-Vs = 240.0 #km/s
-sigVs = 8.0
+Vs = 220.0 #km/s
+sigVs = 7.0
 
-Rskpc = 8.34 #kpc
-sigRs = 0.16 
+Rskpc = 8.00 #kpc
+sigRs = 0.17 
 
 
 b0reid14 = -0.2 # km s^-1 kpc^-1, (dV/dR)
